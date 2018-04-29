@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Arvo:400,700');
+
+.App {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.canvas {
+  background: #201F1D;
+  z-index: 98;
+}
+.name {
+  z-index: 99;
+  font-family: 'Arvo', serif;
+  position: absolute;
+  opacity: 0.2;
+  text-align: center;
+}
+.name p {
+  margin: 0;
+}
+.name a {
+  color: #FF9800;
+}
+.letters {
+  font-size: 10vh;
+  font-weight: 900;
+}
+.subtext {
+  color: #FF9800;
+  font-size: 2vh;
+}
+.letter {
+  cursor: pointer;
+  display: inline-block;
+  color: #FF9800;
+  transition: transform 0.2s ease-in-out;
+}
+.letter:hover {
+  transform: scale(1.2);
+}
