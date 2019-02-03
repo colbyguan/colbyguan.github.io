@@ -15,7 +15,7 @@ const clockwise = {
   lr: 'll',
   ll: 'ul'
 };
-const REPEATS = 3;
+const REPEATS = 5;
 const GAME_LENGTH = 30 * 1000;
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
     }
     this.RULES = [this.oppositeCornerRule, this.sameCornerRule, this.cwRule, this.sameCornerTwoBeforeRule, this.cwTwoBeforeRule];
 
-    this.currRule = (corner) => null;
+    this.currRule = this.RULES[0];
     this.corners = {};
     this.prevPoint = Victor(0, 0);
     this.bannedCorner = null;
@@ -52,7 +52,7 @@ class App extends Component {
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
       ctx.globalAlpha = 0.7;
-      ctx.fillStyle = "#DE8D47";
+      ctx.fillStyle = "#3F51B5";
       const corners = {
         ul: Victor(0, 0),
         ll: Victor(0, h),
@@ -119,17 +119,7 @@ class App extends Component {
     this.restart();
   }
   restart = () => {
-    $('.name').css({
-      transition: 'none',
-      opacity: 0.1
-    });
-    setTimeout(() => {
-      $('.name').css({
-        transition: 'opacity 10s',
-        opacity: 1
-      });
-    }, 100)
-        if (this.currInterval) {
+    if (this.currInterval) {
       clearInterval(this.currInterval);
     }
     if (this.currTimeout) {
@@ -163,18 +153,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="name">
-          <div className="letters">{'COLBY'.split('').map((letter, idx) => {
-            return <div key={idx} className='letter' onClick={this.handleClick.bind(this, idx)}>{letter}</div>
+        <div className="caption">
+          <div className="subtext">Explanation: <a href="//en.wikipedia.org/wiki/Chaos_game">chaos game</a></div>
+          <div className="presets">{'12345'.split('').map((letter, idx) => {
+            return <div key={idx} className='preset' onClick={this.handleClick.bind(this, idx)}>{letter}</div>
           })}
+          </div>
         </div>
-        <div className="subtext">
-          <p>Each letter does a different thing</p>
-          <p>See: <a href="//en.wikipedia.org/wiki/Chaos_game">chaos game</a></p>
-        </div>
-        </div>
-        <canvas id="canvas" className="canvas" width={this.state.dim} height={this.state.dim}>
-        </canvas>
+        <canvas id="canvas" className="canvas" width={this.state.dim} height={this.state.dim}></canvas>
       </div>
     );
   }

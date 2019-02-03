@@ -1,43 +1,49 @@
-@import url('https://fonts.googleapis.com/css?family=Arvo:400,700');
+@import url('https://rsms.me/inter/inter-ui.css');
 
+:root {
+  --main: #3F51B5;
+}
+body {
+  font-family: 'Inter UI', serif;
+}
 .App {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   position: relative;
 }
 .canvas {
-  background: #201F1D;
+  background: #FAFAFA;
   z-index: 98;
 }
 .name {
   z-index: 99;
-  font-family: 'Arvo', serif;
   position: absolute;
-  opacity: 0.2;
   text-align: center;
 }
-.name p {
-  margin: 0;
+.caption {
+  margin: 1vh 0;
 }
-.name a {
-  color: #FF9800;
-}
-.letters {
-  font-size: 10vh;
-  font-weight: 900;
+.caption a {
+  color: var(--main);
 }
 .subtext {
-  color: #FF9800;
+  color: var(--main);
   font-size: 2vh;
 }
-.letter {
-  cursor: pointer;
+.presets {
+  font-size: 3vh;
+  font-weight: 700;
+  text-align: center;
+}
+.preset {
   display: inline-block;
-  color: #FF9800;
+  cursor: pointer;
+  color: var(--main);
   transition: transform 0.2s ease-in-out;
+  margin: 0 12px;
 }
 .letter:hover {
   transform: scale(1.2);
